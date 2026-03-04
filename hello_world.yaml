@@ -1,0 +1,9 @@
+---
+- hosts: all
+  tasks:
+  - name: Creating a file with content
+    copy:
+      dest: "/root/hello_world.txt"
+      content: |
+        Hello World!
+        
