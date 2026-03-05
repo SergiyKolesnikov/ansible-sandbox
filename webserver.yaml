@@ -1,0 +1,20 @@
+- name: run a webserver
+  gather_facts: false
+  hosts: all
+  tasks:
+  - name: install httpd
+    ansible.builtin.apt:
+      # update_cache: true
+      name: apache2
+      state: present
+  - name: enable and start httpd service
+    ansible.builtin.service:
+      name: apache2
+      enabled: true
+      state: started
+  - name: open firewall
+    debug:
+      msg: firewal
+  - name: copy index.html
+    debug:
+      msg: index.html
