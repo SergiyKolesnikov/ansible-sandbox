@@ -1,0 +1,15 @@
+- name: error demo
+  gather_facts: false
+  ignore_errors: true
+  hosts: host02
+  tasks:
+  - name: copy a file
+    copy:
+      src: /tmp/hello
+      dest: /tmp/
+  - name: showing syntax error
+    debug:
+      msg: this is a syntax error
+  - name: running this
+    debug:
+      msg: running running this
