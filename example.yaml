@@ -1,0 +1,17 @@
+- name: play one
+  gather_facts: false
+  hosts: host02
+  tasks:
+  - name: task one
+    debug:
+      msg: this is task one talking
+  - name: task two
+    debug:
+      msg: this is task two talking
+- name: play two
+  gather_facts: false
+  hosts: host02
+  tasks:
+  - name: task three
+    debug:
+      msg: this is task three talking
