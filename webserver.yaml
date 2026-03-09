@@ -2,11 +2,12 @@
   gather_facts: false
   hosts: all
   tasks:
+  - name: install python3-apt
+    ansible.builtin.raw: apt update && apt --fix-broken install -y && apt install -y python3-apt
   - name: install httpd
     ansible.builtin.apt:
-      # update_cache: true
       name: apache2
-      state: present
+      update_cache: true
   - name: enable and start httpd service
     ansible.builtin.service:
       name: apache2
@@ -16,5 +17,7 @@
     debug:
       msg: firewal
   - name: copy index.html
-    debug:
-      msg: index.html
+    ansible.builtin.copy:
+      dest: "/var/www/html/index.html"
+      content: |
+        Hello World!
