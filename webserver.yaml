@@ -3,11 +3,10 @@
   hosts: all
   tasks:
   - name: install python3-apt
-    ansible.builtin.raw: apt update && apt --fix-broken install -y && apt install -y python3-apt
+    ansible.builtin.raw: apt update && apt install -y python3-apt
   - name: install httpd
     ansible.builtin.apt:
       name: apache2
-      update_cache: true
   - name: enable and start httpd service
     ansible.builtin.service:
       name: apache2
@@ -21,3 +20,4 @@
       dest: "/var/www/html/index.html"
       content: |
         Hello World!
+        
