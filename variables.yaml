@@ -1,8 +1,9 @@
 - name: variables demo
-  vars:
-    myuser: anna
+  gather_facts: false
+  vars_files:
+    - varfile
   hosts: all
   tasks:
     - name: create user {{ myuser }}
-      usre:
+      user:
         name: "{{ myuser }}"
