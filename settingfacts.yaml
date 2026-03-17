@@ -1,0 +1,16 @@
+---
+- name: set_fact demo
+  hosts: all
+  tasks:
+    - name: set host facts
+      ansible.builtin.set_fact:
+        myfirstfact: saturday
+        mysecondfact: evening
+    - debug:
+        msg: Recording this on {{ myfirstfact }} {{ mysecondfact }}
+
+- name: new play
+  hosts: all
+  tasks:
+    - debug:
+        msg: It is still {{ myfirstfact }} {{ mysecondfact }}
