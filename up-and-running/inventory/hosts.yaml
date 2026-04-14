@@ -1,0 +1,7 @@
+all:
+  children:
+    webservers:
+      hosts:
+        testserver:
+          ansible_host: host02
+          ansible_user: root
