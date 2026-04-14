@@ -7,6 +7,7 @@
   pre_tasks:
     - name: Ensure python3-apt is installed (bootstrap)
       raw: apt-get install -y python3-apt
+      ignore_errors: True
       changed_when: False
 
   tasks:
