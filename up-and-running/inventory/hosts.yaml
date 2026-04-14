@@ -5,3 +5,7 @@ all:
         testserver:
           ansible_host: host02
           ansible_user: root
+    local:
+      hosts:
+        localhost:
+          ansible_connection: local
