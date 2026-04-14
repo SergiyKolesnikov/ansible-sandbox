@@ -3,9 +3,15 @@
 - name: Configure webserver with nginx
   hosts: webservers
   become: True
+
+  pre_tasks:
+    - name: Ensure python3-apt is installed (bootstrap)
+      raw: apt-get install -y python3-apt
+      changed_when: False
+
   tasks:
     - name: Ensure nginx is installed
-      pachage: name=nginx update_cache=yes
+      package: name=nginx update_cache=yes
 
     - name: Copy nginx config file
       copy:
