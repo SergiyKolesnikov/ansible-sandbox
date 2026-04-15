@@ -3,5 +3,11 @@ The following command fixes the target server host02 in the O'Reilly's Ansible S
 Run it on host01 (the control host).
 
 ```
-ansible servers -m ansible.builtin.raw -a 'apt-get update; apt-get --fix-broken --yes --option Dpkg::Options::="--force-confold" install; apt-get --yes reinstall python3-paramiko python3-apt'
+ansible servers -m ansible.builtin.raw -a 'apt-get update; apt-get --fix-broken --yes --option Dpkg::Options::="--force-confold" install; apt-get --yes reinstall python3-paramiko python3-apt; apt-get --only-upgrade --yes install python3-paramiko python3-apt' 
+```
+
+Test it by installing a package
+
+```
+ansible servers -m package -a 'name=cowsay'
 ```

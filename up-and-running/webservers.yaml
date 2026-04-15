@@ -5,7 +5,7 @@
 
   tasks:
     - name: Ensure nginx is installed
-      package: name=nginx update_cache=yes
+      package: name=nginx  # update_cache=yes
 
     - name: Copy nginx config file
       copy:
