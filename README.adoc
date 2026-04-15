@@ -1,0 +1,5 @@
+The following command fixes the target server host02 in the O'Reilly's Ansible Sandbox, such that the Ansible's `package` and `apt` modules can be used to install packages on it.
+
+```
+ansible servers -m ansible.builtin.raw -a 'apt-get update; apt-get --fix-broken --yes --option Dpkg::Options::="--force-confold" install; apt-get --yes reinstall python3-paramiko python3-apt'
+```
