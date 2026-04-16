@@ -3,10 +3,15 @@
   hosts: webservers
   become: True
   tasks:
+  # sudo sed -i 's/us.archive.ubuntu.com/archive.ubuntu.com/g' /etc/apt/sources.list
     - name: Try to update package cache
-      package:
-        update_cache: true
+      raw: |-
+        sudo sed -i 's/us.archive.ubuntu.com/archive.ubuntu.com/g' /etc/apt/sources.list
+        curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo gpg --dearmor -o /etc/apt/keyrings/docker.gpg
+        echo 'deb [arch=amd64 signed-by=/etc/apt/keyrings/docker.gpg] https://download.docker.com/linux/ubuntu jammy stable' >/etc/apt/sources.list.d/archive_uri-https_download_docker_com_linux_ubuntu-jammy.list
+        apt-get update
       ignore_errors: true
+      when: false
 
     - name: Ensure nginx is installed
       package:
