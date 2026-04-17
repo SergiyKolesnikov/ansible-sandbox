@@ -2,21 +2,11 @@
 - name: Configure webserver with nginx
   hosts: webservers
   become: True
-  pre_tasks:
-    - name: Fix O'Reillys Ansible Sandbox host02 apt sources
-      raw: |-
-        sudo sed -i 's/us.archive.ubuntu.com/archive.ubuntu.com/g' /etc/apt/sources.list
-        curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo gpg --dearmor -o /etc/apt/keyrings/docker.gpg
-        echo 'deb [arch=amd64 signed-by=/etc/apt/keyrings/docker.gpg] https://download.docker.com/linux/ubuntu jammy stable' >/etc/apt/sources.list.d/archive_uri-https_download_docker_com_linux_ubuntu-jammy.list
-        curl -fsSL https://dl.yarnpkg.com/debian/pubkey.gpg | sudo gpg --dearmor -o /etc/apt/keyrings/yarn.gpg
-        echo 'deb [signed-by=/etc/apt/keyrings/yarn.gpg] https://dl.yarnpkg.com/debian stable main' >/etc/apt/sources.list.d/yarn.list
-        apt-get update
-      ignore_errors: true
-      when: true
   tasks:
     - name: Ensure nginx is installed
       package:
         name: nginx
+        update_cache: true
 
     - name: Copy nginx config file
       copy:
