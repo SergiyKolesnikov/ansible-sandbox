@@ -1,0 +1,3 @@
+deb http://de.archive.ubuntu.com/ubuntu jammy main restricted universe multiverse
+deb http://de.archive.ubuntu.com/ubuntu jammy-updates main restricted universe multiverse
+deb http://de.archive.ubuntu.com/ubuntu jammy-backports main restricted universe multiverse

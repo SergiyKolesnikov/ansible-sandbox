@@ -1,0 +1,17 @@
+---
+- name: Fix O'Reillys Ansible Sandbox host02 apt sources
+  hosts: all
+  become: True
+  tasks:
+    - name: Copy clean sources.list
+      copy:
+        src: sources.list
+        dest: /etc/apt/sources.list
+    - name: Remove all unneeded apt sources and update
+      raw: |-
+        rm /etc/apt/sources.list.d/*
+        apt-get clean
+        apt-get update
+      ignore_errors: true
+      when: true
+...
