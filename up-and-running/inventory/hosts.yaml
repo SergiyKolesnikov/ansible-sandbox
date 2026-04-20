@@ -3,10 +3,10 @@ all:
     webservers:
       hosts:
         testserver:
-          ansible_host: host02
-          ansible_user: root
+          ansible_host: localhost
+          ansible_user: ansible
     local:
       hosts:
         localhost:
           ansible_connection: local
-          ansible_user: root
+          ansible_user: ansible
