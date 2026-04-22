@@ -1,12 +1,19 @@
+---
 all:
   children:
     webservers:
       hosts:
-        testserver:
+        Ubuntu:
           ansible_host: localhost
-          ansible_user: ansible
+          ansible_port: 22
+        Ubuntu-2:
+          ansible_host: localhost
+          ansible_port: 60222
+        Ubuntu-3:
+          ansible_host: localhost
+          ansible_port: 60322
     local:
       hosts:
         localhost:
           ansible_connection: local
-          ansible_user: ansible
+...
