@@ -24,11 +24,6 @@
         name: nginx
         update_cache: true
 
-    # - name: Copy nginx config file
-    #   ansible.builtin.copy:
-    #     src: nginx.conf
-    #     dest: /etc/nginx/sites-available/default
-
     - name: Create directories for TLS certificates
       ansible.builtin.file:
         path: "{{ tls_dir }}"
