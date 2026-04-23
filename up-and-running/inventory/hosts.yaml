@@ -6,12 +6,18 @@ all:
         Ubuntu:
           ansible_host: localhost
           ansible_port: 22
+          nginx_port: 80
+          nginx_port_ssl: 443
         Ubuntu-2:
           ansible_host: localhost
-          ansible_port: 60222
+          ansible_port: 62022
+          nginx_port: 62080
+          nginx_port_ssl: 62443
         Ubuntu-3:
           ansible_host: localhost
-          ansible_port: 60322
+          ansible_port: 63022
+          nginx_port: 63080
+          nginx_port_ssl: 63443
     local:
       hosts:
         localhost:
