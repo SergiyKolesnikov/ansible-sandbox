@@ -1,0 +1,20 @@
+---
+- name: Debug a registered variable
+  hosts: all
+  gather_facts: false
+
+  tasks:
+    - name: Run the whoami command
+      command: whoami
+      register: result
+
+    - debug: var=result.stdout
+    - debug: msg="Logged in as {{ result.stdout }}"
+
+    - name: Failed run
+      command: whoami --invalid
+      register: failed_result
+      ignore_errors: true
+
+    - debug: var=failed_result
+...

@@ -1,0 +1,13 @@
+---
+- name: Ping all hosts
+  hosts: all
+  gather_facts: true
+
+  tasks:
+    - debug: var=ansible_facts
+
+    - service_facts:
+      register: service_facts_result
+
+    - debug: var=service_facts_result
+...

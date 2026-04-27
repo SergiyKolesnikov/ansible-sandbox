@@ -1,0 +1,6 @@
+- name: Show the value of any variable named on the command line
+  hosts: all
+  gather_facts: true
+
+  tasks:
+    - debug: var="{{ variable }}"
